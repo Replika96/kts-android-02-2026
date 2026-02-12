@@ -28,7 +28,9 @@ class Order(
      * Removes the first product matching [productId].
      */
     fun removeProductById(productId: Int) {
-        _products.removeAll { it.id == productId }
+        _products.find { it.id == productId }?.let {
+            _products.remove(it)
+        }
     }
 
     /**
